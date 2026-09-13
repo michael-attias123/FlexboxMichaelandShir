@@ -104,7 +104,12 @@ button { font: inherit; color: inherit; }
 
 .brand__text { display: flex; flex-direction: column; }
 .brand__title { font-family: var(--display); font-size: 26px; letter-spacing: 0.01em; }
-.brand__sub { font-size: 12.5px; color: rgba(246, 241, 228, 0.62); }
+.brand__sub {
+  font-size: 13.5px;
+  line-height: 1.45;
+  max-width: 42ch;
+  color: rgba(246, 241, 228, 0.72);
+}
 
 /* מפת הטיול */
 .route__list {
@@ -321,12 +326,6 @@ button { font: inherit; color: inherit; }
   to { opacity: 0; visibility: hidden; }
 }
 
-.stage-note {
-  margin: 12px 0 0;
-  font-size: 12.5px;
-  color: rgba(246, 241, 228, 0.5);
-}
-
 /* ---------- כרטיס המשימה ---------- */
 
 .panel {
@@ -502,14 +501,13 @@ button { font: inherit; color: inherit; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
   padding: 16px clamp(14px, 4vw, 40px) 28px;
   border-top: 1px solid var(--line);
   font-size: 13px;
   color: rgba(246, 241, 228, 0.5);
 }
-.footer p { margin: 0; }
 
 .linkish {
   background: none;
