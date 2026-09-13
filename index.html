@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>טיול במזרח — משחק Flexbox</title>
+  <meta name="description" content="משחק ללימוד Flexbox: הטיסו את המטוסים ליעדם בשמונה מדינות במזרח אסיה.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;900&family=Suez+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#panel">דלגו אל לוח הבקרה</a>
+
+  <header class="masthead">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2 13.5 22 4l-6.2 9.2L22 20l-8.4-3.8L10 22l-.6-5.6z"/></svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__title">טיול במזרח</span>
+        <span class="brand__sub">תשעה יעדים, משימה אחת: לסדר את המטוסים ב‑Flexbox</span>
+      </span>
+    </div>
+
+    <nav class="route" aria-label="מפת הטיול">
+      <ol class="route__list" id="routeList"></ol>
+    </nav>
+
+    <dl class="hud">
+      <div class="hud__cell">
+        <dt>שלב</dt>
+        <dd id="hudStage">1 מתוך 8</dd>
+      </div>
+      <div class="hud__cell">
+        <dt>ניקוד</dt>
+        <dd id="hudScore">0</dd>
+      </div>
+      <div class="hud__cell">
+        <dt>ניסיונות בשלב</dt>
+        <dd id="hudTries">0</dd>
+      </div>
+    </dl>
+  </header>
+
+  <main class="layout">
+
+    <section class="stage-wrap" aria-labelledby="destTitle">
+      <div class="dest">
+        <h1 class="dest__name" id="destTitle">יפן</h1>
+        <p class="dest__place" id="destPlace">טוקיו</p>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="board-frame" id="boardFrame">
+          <div class="board" id="board" dir="ltr">
+            <div class="board__scene" id="scene" aria-hidden="true"></div>
+            <div class="board__scrim" aria-hidden="true"></div>
+            <div class="board__ghosts" id="ghosts" aria-hidden="true"></div>
+            <div class="board__items" id="items" role="img" aria-label="לוח המשחק עם המטוסים"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="stage-note">גודל הלוח קבוע — \u200E480×400\u200E פיקסלים — בכל גודל מסך, כך שהפתרון זהה תמיד.</p>
+    </section>
+
+    <aside class="panel" id="panel" aria-label="לוח הבקרה">
+      <div class="panel__stub">
+        <span class="panel__flight" id="flightNo">EF‑01</span>
+        <span class="panel__label">כרטיס משימה</span>
+      </div>
+
+      <div class="panel__body">
+        <h2 class="task__title">המשימה</h2>
+        <p class="task__text" id="taskText"></p>
+
+        <form class="controls" id="controls" autocomplete="off"></form>
+
+        <pre class="codebox" id="codeBox" aria-label="הקוד הנוכחי של הלוח"></pre>
+
+        <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+
+        <div class="actions">
+          <button class="btn btn--primary" type="button" id="btnCheck">בדקו את הפתרון</button>
+          <button class="btn btn--next" type="button" id="btnNext" hidden>המשיכו ליעד הבא</button>
+          <button class="btn btn--ghost" type="button" id="btnReset">איפוס השלב</button>
+          <button class="btn btn--ghost" type="button" id="btnTarget" aria-pressed="false">הצגת היעד</button>
+          <button class="btn btn--ghost" type="button" id="btnHint">רמז</button>
+        </div>
+
+        <p class="hint" id="hintText" hidden></p>
+      </div>
+    </aside>
+
+  </main>
+
+  <footer class="footer">
+    <p>נבנה עם HTML, CSS ו‑JavaScript בלבד.</p>
+    <button class="linkish" type="button" id="btnWipe">מחיקת ההתקדמות והתחלה מחדש</button>
+  </footer>
+
+  <div class="finale" id="finale" hidden>
+    <div class="finale__card" role="dialog" aria-modal="true" aria-labelledby="finaleTitle">
+      <h2 class="finale__title" id="finaleTitle">נחתתם בישראל</h2>
+      <p class="finale__lead">הטיול הושלם, הדרכון מלא וכל המטוסים במקומם.</p>
+      <p class="finale__score">ניקוד סופי: <strong id="finaleScore">0</strong> מתוך <span id="finaleMax">900</span></p>
+      <ul class="finale__stamps" id="finaleStamps"></ul>
+      <div class="finale__actions">
+        <button class="btn btn--primary" type="button" id="btnAgain">טיסה חדשה</button>
+        <button class="btn btn--ghost" type="button" id="btnClose">חזרה למפה</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/levels.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
